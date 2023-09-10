@@ -14,8 +14,8 @@ ORDER BY candidate_id
 
 
 --Anthor Solution
-SELECT candidate_id
-FROM candidates
-WHERE skill = 'Python' OR skill = 'PostgreSQL' OR skill = 'Tableau'
-GROUP BY candidate_id
-HAVING COUNT(skill) >= 3
+--SELECT candidate_id
+--FROM candidates
+-- WHERE skill = 'Python' OR skill = 'PostgreSQL' OR skill = 'Tableau'
+-- GROUP BY candidate_id
+-- HAVING COUNT(skill) >= 3
