@@ -5,7 +5,7 @@ SELECT age_bucket,
         SUM(CASE WHEN activity_type = 'open' THEN time_spent ELSE 0 END) AS ttl_open
 FROM activities
 JOIN age_breakdown
-USING(user_id)
+ON activities.user_id = age_breakdown.user_id
 GROUP BY age_bucket
 )
 
