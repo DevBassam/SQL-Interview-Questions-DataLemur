@@ -1,14 +1,14 @@
 -- My Solution
 WITH caller AS 
 (
-SELECT pc.caller_id, pi.country_id, pc.call_time, pc.receiver_id+pc.caller_id AS row_num
+SELECT pc.caller_id, pi.country_id, pc.call_time, pc.receiver_id+pc.caller_id AS call_id
 FROM phone_calls AS pc 
 JOIN phone_info AS pi
 ON pi.caller_id = pc.caller_id
 )
 ,reciever AS
 (
-SELECT pc.receiver_id, pi.country_id, pc.receiver_id+pc.caller_id AS row_num
+SELECT pc.receiver_id, pi.country_id, pc.receiver_id+pc.caller_id AS call_id
 FROM phone_calls AS pc 
 JOIN phone_info AS pi
 ON pi.caller_id = pc.receiver_id
@@ -18,7 +18,7 @@ SELECT ROUND(100.0 * COUNT(CASE WHEN c.country_id <> r.country_id
                            THEN 1 ELSE NULL END) / COUNT(*), 1)
 FROM caller AS c 
 JOIN reciever AS r
-USING(row_num)
+USING(call_id)
 
 
 
